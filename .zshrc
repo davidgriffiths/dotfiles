@@ -33,6 +33,8 @@ export CAKE_REMOTE_APP=cake-data
 export EDITOR=vim
 
 export FZF_TMUX=1
+# Z - cd sanely
+. $HOME/.scripts/z/z.sh
 
 # Modifying
 alias ohmy='vim ~/.oh-my-zsh'
