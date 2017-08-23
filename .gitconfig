@@ -1,0 +1,19 @@
+[user]
+	name = David Griffiths
+ 	email = d@vid.gr
+
+[alias]
+     ac  = !git add . && git commit
+      c  = commit
+    log  = log --pretty=format:'%cred%h%creset -%c(yellow)%d%creset %s %cgreen(%cr) %c(bold blue)<%an>%creset' --abbrev-commit --
+     ca  = commit --amend
+     lr  = pull --rebase
+     cb  = branch --merged | ag dg | xargs -n 1 git branch -d
+     rao = remote add origin
+     st  = status
+
+[diff]
+	tool = vimdiff
+
+[merge]
+	conflictstyle = diff3
