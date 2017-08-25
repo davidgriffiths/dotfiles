@@ -27,7 +27,7 @@ Plug 'rizzatti/dash.vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'kovisoft/slimv'
 Plug 'janko-m/vim-test'
-Plug 'vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
