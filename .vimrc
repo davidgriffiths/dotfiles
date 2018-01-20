@@ -1,12 +1,9 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'adinapoli/vim-markmultiple'
-Plug 'c9s/bufexplorer'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'godlygeek/tabular'
-Plug 'jazzCore/ctrlp-cmatcher'
 Plug 'junegunn/goyo.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'rking/ag.vim'
 Plug 'ngmy/vim-rubocop'
 Plug 'thoughtbot/vim-rspec'
@@ -28,6 +25,8 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'kovisoft/slimv'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 call plug#end()
 
@@ -193,14 +192,7 @@ autocmd BufWritePre     * :call RemoveBlankLines()
 map <Leader>c :ccl<CR>
 map <leader>o :copen<CR>
 
-" ctrlp config
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_max_height = 20
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_match_window_reversed = 0 "Matches appear at the top of the window
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .DS_Store
-      \ -g ""'
-
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch' }
+"fzf key bindings
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>r :Tags<CR>

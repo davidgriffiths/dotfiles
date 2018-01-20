@@ -32,6 +32,8 @@ export CAKE_REMOTE_APP=cake-data
 
 export EDITOR=vim
 
+export FZF_TMUX=1
+
 # Modifying
 alias ohmy='vim ~/.oh-my-zsh'
 alias zsh='vim ~/.zshrc'
@@ -58,3 +60,5 @@ alias mlm='vim `ls -r db/migrate/* | head -n 1`'
 alias wipetest='RAILS_ENV=test rake db:drop db:create db:test:clone_structure'
 alias ts='bundle exec thin start'
 alias pslog='tail -f /var/log/postgresql'
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
