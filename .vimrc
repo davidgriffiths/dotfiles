@@ -147,21 +147,6 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
-" Add # => markers
-vmap <silent> <F11> !xmpfilter -m<cr>
-nmap <silent> <F11> V<F11>
-imap <silent> <F11> <ESC><F11>a
-
-" Remove # => markers
-vmap <silent> <F10> ms:call RemoveRubyEval()<CR>
-nmap <silent> <F10> V<F10>
-imap <silent> <F10> <EC><F10>a
-
-" Execute the the markers
-vmap <silent> <F9> :call xmpfilter#run('n')<CR>
-nmap <silent> <F9> V<F9>
-imap <silent> <F9> <ESC><F9>a
-
 " rename current file, via Gary Bernhardt
 function! RenameFile()
   let old_name = expand('%')
