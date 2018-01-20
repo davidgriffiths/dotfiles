@@ -127,6 +127,12 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+" Movement in insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-l> <C-o>a
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+
 "remap section key to escape
 imap § <esc>
 
