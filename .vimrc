@@ -28,6 +28,19 @@ Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
 Plug 'vim-ruby/vim-ruby'
+Plug 'ervandew/supertab'
+Plug 'kchmck/vim-coffee-script'
+Plug 'elixir-lang/vim-elixir'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'rizzatti/dash.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'kovisoft/slimv'
+Plug 'janko-m/vim-test'
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'udalov/kotlin-vim'
 
 call plug#end()
 
