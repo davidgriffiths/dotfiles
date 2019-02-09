@@ -26,6 +26,9 @@ export PATH="$HOME/bin:$PATH"
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+#include hidden files in fzf search
+export FZF_DEFAULT_COMMAND='find .'
+
 # cake slice
 export CAKE_LOCAL_DB=alpha_dev
 export CAKE_REMOTE_APP=cake-data
