@@ -93,9 +93,17 @@ hi DiffDelete  ctermbg=235 ctermfg=131 cterm=reverse
 hi DiffText    ctermbg=235 ctermfg=208 cterm=reverse
 
 "Key Mappings
-"
+
 " use comma as <Leader> key instead of backslash
 let mapleader=","
+
+map <Leader>c :ccl<CR>
+map <leader>o :copen<CR>
+
+"fzf key bindings
+nmap ; :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>r :Tags<CR>
 
 " test runner mappings
 nmap <silent> <leader>t :TestNearest<CR>
@@ -119,7 +127,7 @@ map <leader>a :Ag!<space>
 map <leader>r :!ruby %<cr>
 
 " Clear the command line and search highlighting
-noremap <C-l> :nohlsearch<CR> :call MarkMultipleClean()<CR>
+noremap <C-m> :nohlsearch<CR> :call MarkMultipleClean()<CR>
 
 "No arrows
 map <Left> <Nop>
@@ -127,14 +135,29 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+" Move window with control+hjkl
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
 " Movement in insert mode
 inoremap <C-h> <C-o>h
-inoremap <C-l> <C-o>a
+inoremap <C-l> <C-o>l
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 
-"remap section key to escape
+" Remap section key to escape
 imap § <esc>
+
+" Easier splitting
+nmap <C-i> :vsp<CR>
+nmap <C-u> :sp<CR>
+set splitbelow
+set splitright
+
+" Easier close window
+nmap <C-c> <C-w>c
 
 "For project wide actions
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
@@ -179,11 +202,3 @@ autocmd FileWritePre    * :call RemoveBlankLines()
 autocmd FileAppendPre   * :call RemoveBlankLines()
 autocmd FilterWritePre  * :call RemoveBlankLines()
 autocmd BufWritePre     * :call RemoveBlankLines()
-
-map <Leader>c :ccl<CR>
-map <leader>o :copen<CR>
-
-"fzf key bindings
-nmap ; :Buffers<CR>
-nmap <Leader>f :Files<CR>
-nmap <Leader>r :Tags<CR>
