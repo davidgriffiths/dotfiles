@@ -148,6 +148,10 @@ inoremap <C-l> <C-o>l
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 
+" Swap visual mode and visual line mode key bindings
+noremap v <S-v>
+noremap <S-v> v
+
 " Remap section key to escape
 imap § <esc>
 
