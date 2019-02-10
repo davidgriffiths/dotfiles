@@ -164,6 +164,9 @@ set splitright
 " Easier close window
 nmap <C-c> <C-w>c
 
+" qq to record, Q to replay
+nnoremap Q @q
+
 "For project wide actions
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
 function! QuickfixFilenames()
