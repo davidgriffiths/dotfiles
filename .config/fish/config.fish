@@ -4,10 +4,15 @@ set fish_greeting
 set -gx EDITOR nvim
 set -gx LANG en_US.UTF-8
 
-set -x PATH $PATH /usr/local/hombrew/sbin /usr/local/bin /usr/sbin
+set homebrew /usr/local/bin /usr/local/sbin
+set default_path /usr/bin /usr/sbin /bin /sbin
+
+set -gx PATH $homebrew $default_path
 
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
+
+alias vim='nvim'
 
 function fish_prompt
   printf '%s' (prompt_pwd)
