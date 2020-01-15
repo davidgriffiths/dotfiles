@@ -80,6 +80,10 @@ set linebreak
 set nolist  " list disables linebreak
 let test#strategy = "dispatch" "use dispatch for vim-test strategy
 
+
+" Vim inspector mode
+let g:vimspector_enable_mappings = 'HUMAN'
+
 "Use the system clipboard as the default register
 set clipboard=unnamed
 
