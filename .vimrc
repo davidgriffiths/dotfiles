@@ -1,6 +1,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'adinapoli/vim-markmultiple'
+Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'elixir-lang/vim-elixir'
@@ -16,31 +17,21 @@ Plug 'kchmck/vim-coffee-script'
 Plug 'kovisoft/slimv'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'ngmy/vim-rubocop'
+Plug 'puremourning/vimspector'
 Plug 'rizzatti/dash.vim'
 Plug 'rking/ag.vim'
 Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
-Plug 'ervandew/supertab'
-Plug 'kchmck/vim-coffee-script'
-Plug 'elixir-lang/vim-elixir'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'rizzatti/dash.vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'kovisoft/slimv'
-Plug 'janko-m/vim-test'
-Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/fzf.vim'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'fatih/vim-go'
 Plug 'udalov/kotlin-vim'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -93,9 +84,13 @@ let test#strategy = "dispatch" "use dispatch for vim-test strategy
 set clipboard=unnamed
 
 "Colours
-let g:hybrid_custom_term_colors = 1
-set background=dark
-colorscheme hybrid
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+
+" let g:hybrid_custom_term_colors = 1
+" set background=dark
+" colorscheme hybrid
 set number
 highlight LineNr ctermfg=darkgrey
 set numberwidth=1
