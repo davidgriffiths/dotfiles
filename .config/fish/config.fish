@@ -9,6 +9,8 @@ set default_path /usr/bin /usr/sbin /bin /sbin
 
 set -gx PATH $homebrew $default_path
 
+set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
+
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
 
