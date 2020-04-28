@@ -166,6 +166,10 @@ inoremap JK <Esc>
 inoremap Jk <Esc>
 inoremap jK <Esc>
 
+" Move to end/beginning of lines with HL
+noremap H ^
+noremap L $
+
 " Swap visual mode and visual line mode key bindings
 noremap v <S-v>
 noremap <S-v> v
