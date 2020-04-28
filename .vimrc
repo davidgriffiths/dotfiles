@@ -159,6 +159,9 @@ map <Right> <Nop>
 map <Up> <Nop>
 map <Down> <Nop>
 
+" Select entire buffer
+nnoremap vy ggVG
+
 " Move window with control+hjkl
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
