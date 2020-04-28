@@ -12,6 +12,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'kchmck/vim-coffee-script'
 Plug 'kovisoft/slimv'
@@ -87,14 +88,24 @@ let g:vimspector_enable_mappings = 'HUMAN'
 "Use the system clipboard as the default register
 set clipboard=unnamed
 
-"Colours
-set termguicolors     " enable true colors support
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+" Colours
 
+" enable true colors support
+set termguicolors
+
+" Ayu colorscheme
+" let ayucolor="dark
+" colorscheme ayu
+
+" seoul256 colorscheme
+colo seoul256
+set background=light
+
+" Hybrid colorscheme
 " let g:hybrid_custom_term_colors = 1
 " set background=dark
 " colorscheme hybrid
+
 set number
 highlight LineNr ctermfg=darkgrey
 set numberwidth=1
