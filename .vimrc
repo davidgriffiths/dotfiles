@@ -160,6 +160,12 @@ inoremap <C-l> <C-o>l
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 
+" Escape using jk variants
+inoremap jk <Esc>
+inoremap JK <Esc>
+inoremap Jk <Esc>
+inoremap jK <Esc>
+
 " Swap visual mode and visual line mode key bindings
 noremap v <S-v>
 noremap <S-v> v
