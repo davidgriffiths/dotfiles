@@ -1,8 +1,12 @@
+" set ale completion before any plugins are loaded
+let g:ale_completion_enabled=1
+
 call plug#begin('~/.vim/plugged')
 
 Plug 'adinapoli/vim-markmultiple'
 Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'elixir-lang/vim-elixir'
 Plug 'ervandew/supertab'
@@ -81,6 +85,11 @@ set linebreak
 set nolist  " list disables linebreak
 let test#strategy = "dispatch" "use dispatch for vim-test strategy
 
+" Language Server config
+let g:ale_kotlin_kotlinc_enable_config=1
+let g:ale_kotlin_languageserver_executable='~/Repositories/KotlinLanguageServer/server/build/install/server/bin/server'
+let g:ale_kotlin_klint_executable='~/klint'
+let g:ale_fix_on_save = 1
 
 " Vim inspector mode
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -202,6 +211,10 @@ nmap <C-c> <C-w>c
 
 " qq to record, Q to replay
 nnoremap Q @q
+
+" jump to definition
+map <leader>g <Plug>(ale_go_to_type_definition_in_vsplit) :ALEGoToDefinitionInVSplit<Return>
+
 
 "For project wide actions
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
