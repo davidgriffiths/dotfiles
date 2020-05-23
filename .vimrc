@@ -1,5 +1,4 @@
-" set ale completion before any plugins are loaded
-let g:ale_completion_enabled=1
+let g:ale_completion_enabled=1  " set ale completion before any plugins are loaded
 
 call plug#begin('~/.vim/plugged')
 
@@ -35,55 +34,66 @@ Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
-Plug 'fatih/vim-go'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
-
 call plug#end()
 
-let g:ag_working_path_mode="r"  " ag search from the root of the project
-set nocompatible                " choose no compatibility with legacy vi
+let g:ag_working_path_mode="r"       " ag search from the root of the project
+set nocompatible                     " choose no compatibility with legacy vi
 syntax enable
-" set re=1
 set encoding=utf-8
-set showcmd                     " display incomplete commands
-filetype plugin indent on       " load file type plugins + indentation
-set ttyfast                     " render more chars to the screen for smooth scroll
-set lazyredraw                  " only redraw typed commands
-set wildmenu
-set wildmode=longest:full,full
-set ls=2                        " Show the status bar
+set clipboard=unnamed                " Use the system clipboard as the default register
+set showcmd                          " display incomplete commands
+filetype plugin indent on            " load file type plugins + indentation
+set ttyfast                          " render more chars to the screen for smooth scroll
+set lazyredraw                       " only redraw typed commands
+set wildmenu                         " configure tab complete to something sensible
+set wildmode=longest:full,full       " configure tab complete to something comfortable
+set ls=2                             " Show the status bar
+set diffopt+=iwhite                  " ignore whitespaces when diffing conflicts
+set nowrap                           " don't wrap lines
+set tabstop=2 shiftwidth=2           " a tab is two spaces (or set this to 4)
+set expandtab                        " use spaces, not tabs (optional)
+set backspace=indent,eol,start       " backspace through everything in insert mode
+autocmd BufWritePre *.* :%s/\s\+$//e " trim trailing whitespace in all files, fairly aggressively
+set hlsearch                         " highlight matches
+set incsearch                        " incremental searching
+set ignorecase                       " searches are case insensitive...
+set smartcase                        " ... unless they contain at least one capital letter
+set nocompatible                     " don't need to be compatible with old vim
+set showmatch                        " show bracket matches
+set hlsearch                         " highlight all search matches
+set smartcase                        " pay attention to case when caps are used
+set incsearch                        " show search results as I type
+set mouse=a                          " enable mouse support
+set ttimeoutlen=100                  " decrease timeout for faster insert with 'O'
+set vb                               " enable visual bell (disable audio bell)
+set ruler                            " show row and column in footer
+set scrolloff=2                      " minimum lines above/below cursor
+set wrap linebreak nolist            " configure soft wrapping
+let test#strategy = "dispatch"       " use dispatch for vim-test strategy
+set term=xterm                       " disable this for nvim
+set number                           " enable line numbers
+set numberwidth=1                    " set line number width
+"set list listchars=tab:»·,trail:·   " show extra space characters
+"set cursorline                      " highlight current line
+"set cursorline cursorcolumn         " highlight current column
+set termguicolors                    " enable true colors support
+highlight LineNr ctermfg=darkgrey
+set t_Co=256                         " enable 256 colors
+colo seoul256                        " seoul256 colorscheme
+set background=light                 " seoul256 light mode
+" colorscheme ayu                    " ayu colorscheme
+" let ayucolor="dark"                " ayu dark mode
+" colorscheme hybrid                 " hybrid colorscheme
+" set background=dark                " hybrid dark mode
+" let g:hybrid_custom_term_colors=1  " enable custom colors
 
-"" Whitespace
-set diffopt+=iwhite
-set nowrap                      " don't wrap lines
-set tabstop=2 shiftwidth=2      " a tab is two spaces (or set this to 4)
-set expandtab                   " use spaces, not tabs (optional)
-set backspace=indent,eol,start  " backspace through everything in insert mode
-autocmd BufWritePre *.* :%s/\s\+$//e "trim trailing whitespace in all files, fairly aggressively
-"set list listchars=tab:»·,trail:· " show extra space characters
-
-"" Searching
-set hlsearch                      " highlight matches
-set incsearch                     " incremental searching
-set ignorecase                    " searches are case insensitive...
-set smartcase                     " ... unless they contain at least one capital letter
-set nocompatible                  " don't need to be compatible with old vim
-set showmatch                     " show bracket matches
-set hlsearch                      " highlight all search matches
-" set cursorline                    " highlight current line
-" set cursorline cursorcolumn       " highlight current column
-set smartcase                     " pay attention to case when caps are used
-set incsearch                     " show search results as I type
-set mouse=a                       " enable mouse support
-set ttimeoutlen=100               " decrease timeout for faster insert with 'O'
-set vb                            " enable visual bell (disable audio bell)
-set ruler                         " show row and column in footer
-set scrolloff=2                   " minimum lines above/below cursor
-set wrap
-set linebreak
-set nolist  " list disables linebreak
-let test#strategy = "dispatch" "use dispatch for vim-test strategy
+" Make diff colours not terrible
+hi DiffAdd     ctermbg=235 ctermfg=108 cterm=reverse
+hi DiffChange  ctermbg=235 ctermfg=103 cterm=reverse
+hi DiffDelete  ctermbg=235 ctermfg=131 cterm=reverse
+hi DiffText    ctermbg=235 ctermfg=208 cterm=reverse
 
 " Language Server config
 let g:ale_kotlin_kotlinc_enable_config=1
@@ -93,53 +103,30 @@ let g:ale_fix_on_save = 1
 
 " Vim inspector mode
 let g:vimspector_enable_mappings = 'HUMAN'
-
-"Use the system clipboard as the default register
-set clipboard=unnamed
-
-" Colours
-
-" enable true colors support
-set termguicolors
-
-" Ayu colorscheme
-" let ayucolor="dark
-" colorscheme ayu
-
-" seoul256 colorscheme
-colo seoul256
-set background=light
-
-" Hybrid colorscheme
-" let g:hybrid_custom_term_colors = 1
-" set background=dark
-" colorscheme hybrid
-
-set number
-highlight LineNr ctermfg=darkgrey
-set numberwidth=1
-set t_Co=256
-
-hi DiffAdd     ctermbg=235 ctermfg=108 cterm=reverse
-hi DiffChange  ctermbg=235 ctermfg=103 cterm=reverse
-hi DiffDelete  ctermbg=235 ctermfg=131 cterm=reverse
-hi DiffText    ctermbg=235 ctermfg=208 cterm=reverse
-
-"Key Mappings
+packadd! vimspector
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
+" close quickfix window ,c
 map <Leader>c :ccl<CR>
+
+" open quickfix window with ,o
 map <leader>o :copen<CR>
 
-"fzf key bindings
+" open fzf buffer search with ;
 nmap ; :Buffers<CR>
+
+" open fzf file search with ,f
 nmap <Leader>f :Files<CR>
+
+" open fzf tag search with ,r
 nmap <Leader>r :Tags<CR>
 
-" test runner mappings
+" open nearest test to current file with ,t
 nmap <silent> <leader>t :TestNearest<CR>
+
+" open test to current file with ,R
 nmap <silent> <leader>T :TestFile<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -162,7 +149,7 @@ map <leader>r :!ruby %<cr>
 " Clear the command line and search highlighting
 noremap <C-m> :nohlsearch<CR> :call MarkMultipleClean()<CR>
 
-"No arrows
+" No arrows
 map <Left> <Nop>
 map <Right> <Nop>
 map <Up> <Nop>
@@ -196,7 +183,7 @@ noremap L $
 " Swap visual mode and visual line mode key bindings
 noremap v <S-v>
 noremap <S-v> v
-
+"
 " Remap section key to escape
 imap § <esc>
 
@@ -252,7 +239,7 @@ endfunction
 :command! PromoteToLet :call PromoteToLet()
 :map <leader>p :PromoteToLet<cr>
 
-"Removes blank lines at the end of files
+" Removes blank lines at the end of files
 function! RemoveBlankLines()
   :silent! :%s#\($\n\s*\)\+\%$##
 endfunction
