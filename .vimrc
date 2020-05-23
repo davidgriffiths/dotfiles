@@ -6,6 +6,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'adinapoli/vim-markmultiple'
 Plug 'ayu-theme/ayu-vim'
 Plug 'christoomey/vim-tmux-runner'
+Plug 'dag/vim-fish'
 Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'elixir-lang/vim-elixir'
@@ -42,7 +43,6 @@ call plug#end()
 
 let g:ag_working_path_mode="r"  " ag search from the root of the project
 set nocompatible                " choose no compatibility with legacy vi
-set shell=/bin/zsh
 syntax enable
 " set re=1
 set encoding=utf-8
@@ -215,6 +215,8 @@ nnoremap Q @q
 " jump to definition
 map <leader>g <Plug>(ale_go_to_type_definition_in_vsplit) :ALEGoToDefinitionInVSplit<Return>
 
+" configure fish plugin
+compiler fish
 
 "For project wide actions
 command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
