@@ -159,6 +159,9 @@ map <leader>r :!ruby %<cr>
 " Clear the command line and search highlighting
 noremap <C-m> :nohlsearch<CR> :call MarkMultipleClean()<CR>
 
+" GB spellcheck with f5
+map <F5> :setlocal spell! spelllang=en_gb<CR>
+
 " No arrows
 map <Left> <Nop>
 map <Right> <Nop>
