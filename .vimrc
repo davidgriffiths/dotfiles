@@ -1,4 +1,4 @@
-let g:ale_completion_enabled=1  " set ale completion before any plugins are loaded
+let g:ale_set_balloons = 1
 
 call plug#begin('~/.vim/plugged')
 
@@ -9,7 +9,7 @@ Plug 'dag/vim-fish'
 Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'elixir-lang/vim-elixir'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
 Plug 'jelera/vim-javascript-syntax'
@@ -38,13 +38,15 @@ Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
 call plug#end()
 
+set omnifunc=ale#completion#OmniFunc
+
+filetype plugin indent on            " load file type plugins + indentation
 let g:ag_working_path_mode="r"       " ag search from the root of the project
 set nocompatible                     " choose no compatibility with legacy vi
 syntax enable
 set encoding=utf-8
 set clipboard=unnamed                " Use the system clipboard as the default register
 set showcmd                          " display incomplete commands
-filetype plugin indent on            " load file type plugins + indentation
 set ttyfast                          " render more chars to the screen for smooth scroll
 set lazyredraw                       " only redraw typed commands
 set wildmenu                         " configure tab complete to something sensible
@@ -52,8 +54,8 @@ set wildmode=longest:full,full       " configure tab complete to something comfo
 set ls=2                             " Show the status bar
 set diffopt+=iwhite                  " ignore whitespaces when diffing conflicts
 set nowrap                           " don't wrap lines
-set tabstop=2 shiftwidth=2           " a tab is two spaces (or set this to 4)
-set expandtab                        " use spaces, not tabs (optional)
+set tabstop=2 shiftwidth=2           " a tab is two spaces
+set expandtab                        " use spaces, not tabs
 set backspace=indent,eol,start       " backspace through everything in insert mode
 autocmd BufWritePre *.* :%s/\s\+$//e " trim trailing whitespace in all files, fairly aggressively
 set hlsearch                         " highlight matches
@@ -72,9 +74,12 @@ set ruler                            " show row and column in footer
 set scrolloff=2                      " minimum lines above/below cursor
 set wrap linebreak nolist            " configure soft wrapping
 let test#strategy = "dispatch"       " use dispatch for vim-test strategy
-set term=xterm                       " disable this for nvim
 set number                           " enable line numbers
 set numberwidth=1                    " set line number width
+autocmd FileType kotlin setlocal expandtab shiftwidth=4 tabstop=4
+if !has('nvim')
+  set term=xterm
+endif
 "set list listchars=tab:»·,trail:·   " show extra space characters
 "set cursorline                      " highlight current line
 "set cursorline cursorcolumn         " highlight current column
@@ -96,14 +101,17 @@ hi DiffDelete  ctermbg=235 ctermfg=131 cterm=reverse
 hi DiffText    ctermbg=235 ctermfg=208 cterm=reverse
 
 " Language Server config
-let g:ale_kotlin_kotlinc_enable_config=1
-let g:ale_kotlin_languageserver_executable='~/Repositories/KotlinLanguageServer/server/build/install/server/bin/server'
-let g:ale_kotlin_klint_executable='~/klint'
+let g:ale_kotlin_languageserver_executable='/Users/david/Repositories/kotlin-language-server/server/build/install/server/bin/kotlin-language-server'
+let g:ale_kotlin_klint_executable='~/usr/local/cellar/ktlint/0.36.0/bin/ktlint'
 let g:ale_fix_on_save = 1
+let g:ale_fixers = {'kotlin': ['ktlint']}
+"
 
 " Vim inspector mode
 let g:vimspector_enable_mappings = 'HUMAN'
 packadd! vimspector
+" Fire omnifunc completion
+imap <Tab> <C-x><C-o><C-p>
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
@@ -200,7 +208,10 @@ nmap <C-c> <C-w>c
 nnoremap Q @q
 
 " jump to definition
-map <leader>g <Plug>(ale_go_to_type_definition_in_vsplit) :ALEGoToDefinitionInVSplit<Return>
+map <leader>g <Plug>(ale_go_to_definition_in_vsplit) :ALEGoToDefinition -vsplit<CR>
+
+" find references
+map <Leader>r <Plug>(ale_find_references) :ALEFindReferences<CR>
 
 " configure fish plugin
 compiler fish
