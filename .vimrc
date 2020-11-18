@@ -106,6 +106,8 @@ let g:ale_kotlin_klint_executable='~/usr/local/cellar/ktlint/0.36.0/bin/ktlint'
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {'kotlin': ['ktlint']}
 "
+" fzf appearance
+let g:fzf_layout = { 'down': '40%' }
 
 " Vim inspector mode
 let g:vimspector_enable_mappings = 'HUMAN'
