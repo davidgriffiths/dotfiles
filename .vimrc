@@ -1,3 +1,10 @@
+" Readme
+" ------
+" <c-{h,j,k,l}> are custom mapped to arrows in karabiner-elements
+" therefore <{Left,Right,Up,Down}> is actually <c-{h,j,k,l}>
+
+" .vimrc
+" ------
 let g:ale_set_balloons = 1
 
 call plug#begin('~/.vim/plugged')
@@ -147,8 +154,8 @@ nmap ga <Plug>(EasyAlign)
 
 " Moves selected lines up and down with <c-{j,k}>
 " '> is the last line of the visual selection
-vnoremap <c-j> :m'>+1<cr>gv=gv
-vnoremap <c-k> :m-2<cr>gv=gv
+vnoremap <Down> :m'>+1<cr>gv=gv
+vnoremap <Up> :m-2<cr>gv=gv
 
 " Search using Ag
 map <leader>a :Ag!<space>
@@ -162,20 +169,20 @@ noremap <C-m> :nohlsearch<CR> :call MarkMultipleClean()<CR>
 " GB spellcheck with f5
 map <F5> :setlocal spell! spelllang=en_gb<CR>
 
-" No arrows
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
-
 " Select entire buffer
 nnoremap vy ggVG
 
-" Move window with control+hjkl
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+" Arrows map to <c-{h,j,k,l}> for moving window
+nmap <Left> <C-w>h
+nmap <Right> <C-w>l
+nmap <Down> <C-w>j
+nmap <Up> <C-w>k
+
+" No arrows
+" map <Left> <Nop>
+" map <Right> <Nop>
+" map <Up> <Nop>
+" map <Down> <Nop>
 
 " Movement in insert mode
 inoremap <C-h> <C-o>h
