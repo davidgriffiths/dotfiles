@@ -43,7 +43,6 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
-call plug#end()
 
 set omnifunc=ale#completion#OmniFunc
 
@@ -53,6 +52,7 @@ set nocompatible                     " choose no compatibility with legacy vi
 syntax enable
 set encoding=utf-8
 set clipboard=unnamed                " Use the system clipboard as the default register
+set relativenumber                   " enable relative line numbers
 set showcmd                          " display incomplete commands
 set ttyfast                          " render more chars to the screen for smooth scroll
 set lazyredraw                       " only redraw typed commands
