@@ -44,12 +44,13 @@ Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
 
-set omnifunc=ale#completion#OmniFunc
+call plug#end()
 
+syntax enable
 filetype plugin indent on            " load file type plugins + indentation
 let g:ag_working_path_mode="r"       " ag search from the root of the project
+
 set nocompatible                     " choose no compatibility with legacy vi
-syntax enable
 set encoding=utf-8
 set clipboard=unnamed                " Use the system clipboard as the default register
 set relativenumber                   " enable relative line numbers
@@ -64,7 +65,6 @@ set nowrap                           " don't wrap lines
 set tabstop=2 shiftwidth=2           " a tab is two spaces
 set expandtab                        " use spaces, not tabs
 set backspace=indent,eol,start       " backspace through everything in insert mode
-autocmd BufWritePre *.* :%s/\s\+$//e " trim trailing whitespace in all files, fairly aggressively
 set hlsearch                         " highlight matches
 set incsearch                        " incremental searching
 set ignorecase                       " searches are case insensitive...
@@ -82,11 +82,8 @@ set scrolloff=2                      " minimum lines above/below cursor
 set wrap linebreak nolist            " configure soft wrapping
 let test#strategy = "dispatch"       " use dispatch for vim-test strategy
 set number                           " enable line numbers
+set omnifunc=ale#completion#OmniFunc " use omnifunc for ale autocomplete
 set numberwidth=1                    " set line number width
-autocmd FileType kotlin setlocal expandtab shiftwidth=4 tabstop=4
-if !has('nvim')
-  set term=xterm
-endif
 "set list listchars=tab:»·,trail:·   " show extra space characters
 "set cursorline                      " highlight current line
 "set cursorline cursorcolumn         " highlight current column
@@ -95,11 +92,16 @@ highlight LineNr ctermfg=darkgrey
 set t_Co=256                         " enable 256 colors
 colo seoul256                        " seoul256 colorscheme
 set background=light                 " seoul256 light mode
+
 " colorscheme ayu                    " ayu colorscheme
 " let ayucolor="dark"                " ayu dark mode
 " colorscheme hybrid                 " hybrid colorscheme
 " set background=dark                " hybrid dark mode
 " let g:hybrid_custom_term_colors=1  " enable custom colors
+
+if !has('nvim')
+  set term=xterm
+endif
 
 " Make diff colours not terrible
 hi DiffAdd     ctermbg=235 ctermfg=108 cterm=reverse
@@ -116,9 +118,6 @@ let g:ale_fixers = {'kotlin': ['ktlint']}
 " fzf appearance
 let g:fzf_layout = { 'down': '40%' }
 
-" Vim inspector mode
-let g:vimspector_enable_mappings = 'HUMAN'
-packadd! vimspector
 " Fire omnifunc completion
 imap <Tab> <C-x><C-o><C-p>
 
@@ -143,7 +142,7 @@ nmap <Leader>r :Tags<CR>
 " open nearest test to current file with ,t
 nmap <silent> <leader>t :TestNearest<CR>
 
-" open test to current file with ,R
+" open test to current file with ,T
 nmap <silent> <leader>T :TestFile<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -210,7 +209,7 @@ nmap <Leader>s :source %<CR>
 " Swap visual mode and visual line mode key bindings
 noremap v <S-v>
 noremap <S-v> v
-"
+
 " Remap section key to escape
 imap § <esc>
 
@@ -274,6 +273,11 @@ function! RemoveBlankLines()
   :silent! :%s#\($\n\s*\)\+\%$##
 endfunction
 
+" set kotlin indentation to 4
+autocmd FileType kotlin setlocal expandtab shiftwidth=4 tabstop=4
+
+" trim trailing whitespace in all files, fairly aggressively
+autocmd BufWritePre *.* :%s/\s\+$//e
 autocmd FileWritePre    * :call RemoveBlankLines()
 autocmd FileAppendPre   * :call RemoveBlankLines()
 autocmd FilterWritePre  * :call RemoveBlankLines()
