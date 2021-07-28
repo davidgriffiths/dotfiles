@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# todo: change this to make it option/flag based
+LOCATION=$HOME
+DOTFILES="https://github.com/davidgriffiths/dotfiles.git"
+FISH_PATH="/usr/local/bin/fish"
+
+# install brew
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# make repos folder
+mkdir -p "$LOCATION/Repositories"
+
+# clone dotfiles
+cd "$LOCATION/Repositories"
+git clone $DOTFILES
+
+# move to dotfiles repository
+cd "$LOCATION/Repositories/dotfiles"
+
+# symlink all the dotfiles to the home directory 
+for f in $(find . -type f); do 
+  to="$LOCATION${f#.}"
+  dir="${to%/*}"
+  current="$PWD/${f%./}"
+  mkdir -p $dir
+
+  echo "symlinking $current to $to"
+  ln -sf $current $to
+done
+
+# install all the brewfile dependencies
+brew bundle
+
+# fzf not working
+echo $FISH_PATH >> /etc/shells
+chsh -s $FISH_PATH
+curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+fisher update
