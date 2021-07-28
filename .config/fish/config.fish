@@ -10,7 +10,7 @@ set -x FZF_DEFAULT_COMMAND 'ag --hidden --ignore .git -g ""'
 # set pure prompt symbol
 set -g pure_symbol_prompt ">"
 
-alias vim='nvim'
+# alias vim='nvim'
 
 # rbenv
 status --is-interactive; and source (rbenv init -|psub)
