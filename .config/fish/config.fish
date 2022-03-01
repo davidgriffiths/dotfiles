@@ -12,9 +12,6 @@ set -g pure_symbol_prompt ">"
 
 # alias vim='nvim'
 
-# rbenv
-status --is-interactive; and source (rbenv init -|psub)
-
 function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
