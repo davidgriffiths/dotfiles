@@ -54,6 +54,7 @@ Plug 'tpope/vim-rbenv'
 Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
+Plug 'junegunn/rainbow_parentheses.vim'
 
 call plug#end()
 
