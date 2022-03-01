@@ -1,7 +1,7 @@
 " Readme
 " ------
 " <c-{h,j,k,l}> are custom mapped to arrows in karabiner-elements
-" therefore <{Left,Right,Up,Down}> is actually <c-{h,j,k,l}>
+" therefore <{Left,Right,Up,Down}> are actually <c-{h,j,k,l}>
 
 " .vimrc
 " ------
