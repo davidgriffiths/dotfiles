@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+set fish_greeting
 set -gx EDITOR vim
 set -gx LANG en_US.UTF-8
 set homebrew /usr/local/bin /usr/local/sbin
