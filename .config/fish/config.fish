@@ -1,5 +1,5 @@
 #!/usr/bin/env fish
-set -gx EDITOR nvim
+set -gx EDITOR vim
 set -gx LANG en_US.UTF-8
 set homebrew /usr/local/bin /usr/local/sbin
 set default_path /usr/bin /usr/sbin /bin /sbin
