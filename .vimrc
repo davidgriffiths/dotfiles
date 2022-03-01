@@ -103,13 +103,8 @@ set termguicolors                    " enable true colors support
 highlight LineNr ctermfg=darkgrey
 set t_Co=256                         " enable 256 colors
 colo seoul256                        " seoul256 colorscheme
-set background=light                 " seoul256 light mode
-
-" colorscheme ayu                    " ayu colorscheme
-" let ayucolor="dark"                " ayu dark mode
-" colorscheme hybrid                 " hybrid colorscheme
-" set background=dark                " hybrid dark mode
-" let g:hybrid_custom_term_colors=1  " enable custom colors
+let g:seoul256_background=233
+set background=dark                  " seoul256 dark mode
 
 if !has('nvim')
   set term=xterm
