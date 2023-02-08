@@ -212,10 +212,6 @@ nmap <Leader>w :w<CR>
 " Quick source
 nmap <Leader>s :source %<CR>
 
-" Swap visual mode and visual line mode key bindings
-noremap v <S-v>
-noremap <S-v> v
-
 " Remap section key to escape
 imap § <esc>
 
