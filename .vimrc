@@ -47,6 +47,7 @@ Plug 'tpope/vim-surround'
 Plug 'udalov/kotlin-vim'
 Plug 'vim-ruby/vim-ruby'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 
