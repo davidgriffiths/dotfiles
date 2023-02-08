@@ -12,6 +12,8 @@ set -g pure_symbol_prompt ">"
 
 # alias vim='nvim'
 
+pyenv init - | source
+
 function nvm
     bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
 end
