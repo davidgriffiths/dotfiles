@@ -1,11 +1,3 @@
-" Readme
-" ------
-" <c-{h,j,k,l}> are custom mapped to arrows in karabiner-elements
-" therefore <{Left,Right,Up,Down}> are actually <c-{h,j,k,l}>
-
-" .vimrc
-" ------
-
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -189,6 +181,12 @@ nmap <Up> <C-w>k
 " map <Right> <Nop>
 " map <Up> <Nop>
 " map <Down> <Nop>
+
+" Navigate splits with control-j/k/h/l (without tmux prefix)
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
 
 " Movement in insert mode
 inoremap <C-h> <C-o>h
