@@ -222,7 +222,7 @@ set splitbelow
 set splitright
 
 " Easier close window
-nmap <C-c> <C-w>c
+nmap <C-x> <C-w>c
 
 " qq to record, Q to replay
 nnoremap Q @q
