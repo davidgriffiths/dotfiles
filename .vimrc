@@ -9,95 +9,77 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
 \| endif
 
-let g:ale_set_balloons = 1
+call plug#begin('~/./plugged')
 
-call plug#begin('~/.vim/plugged')
-
-Plug 'adinapoli/vim-markmultiple'
-Plug 'ayu-theme/ayu-vim'
-Plug 'christoomey/vim-tmux-runner'
 Plug 'dag/vim-fish'
-Plug 'dense-analysis/ale'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'elixir-lang/vim-elixir'
-" Plug 'ervandew/supertab'
-Plug 'godlygeek/tabular'
-Plug 'janko-m/vim-test'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'junegunn/rainbow_parentheses.vim' "sweet sweet colours
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'kchmck/vim-coffee-script'
-Plug 'kovisoft/slimv'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'ngmy/vim-rubocop'
-Plug 'rizzatti/dash.vim'
-Plug 'rking/ag.vim'
-Plug 'thoughtbot/vim-rspec'
+Plug 'junegunn/vim-easy-align' " align with: gaip
+Plug 'justinmk/vim-dirvish'    " performant directory viewer
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-endwise'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-fugitive'      " git wrapper
 Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rbenv'
-Plug 'tpope/vim-surround'
-Plug 'udalov/kotlin-vim'
-Plug 'vim-ruby/vim-ruby'
-Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'tpope/vim-repeat'        " dot (.) command that plugins can access
+Plug 'janko-m/vim-test'        " run tests
+Plug 'tpope/vim-surround'      " surround with ys, remove with ds, change with cs
+Plug 'jremmen/vim-ripgrep'
 
 call plug#end()
 
-syntax enable
+colo seoul256                        " seoul256 colorscheme
 filetype plugin indent on            " load file type plugins + indentation
-let g:ag_working_path_mode="r"       " ag search from the root of the project
+highlight LineNr ctermfg=darkgrey
+syntax enable
 
-set nocompatible                     " choose no compatibility with legacy vi
-set encoding=utf-8
-set clipboard=unnamed                " Use the system clipboard as the default register
-set relativenumber                   " enable relative line numbers
-set showcmd                          " display incomplete commands
-set ttyfast                          " render more chars to the screen for smooth scroll
-set lazyredraw                       " only redraw typed commands
-set wildmenu                         " configure tab complete to something sensible
-set wildmode=longest:full,full       " configure tab complete to something comfortable
-set ls=2                             " Show the status bar
-set diffopt+=iwhite                  " ignore whitespaces when diffing conflicts
-set nowrap                           " don't wrap lines
-set tabstop=2 shiftwidth=2           " a tab is two spaces
-set expandtab                        " use spaces, not tabs
+let g:seoul256_background=233
+let test#strategy = "dispatch"       " use dispatch for vim-test strategy
+
+set background=dark                  " seoul256 dark mode
 set backspace=indent,eol,start       " backspace through everything in insert mode
-set hlsearch                         " highlight matches
-set incsearch                        " incremental searching
-set ignorecase                       " searches are case insensitive...
-set smartcase                        " ... unless they contain at least one capital letter
-set nocompatible                     " don't need to be compatible with old vim
-set showmatch                        " show bracket matches
+set clipboard=unnamed                " Use the system clipboard as the default register
+" set cursorline                     " highlight current line
+" set cursorline cursorcolumn        " highlight current column
+set diffopt+=iwhite                  " ignore whitespaces when diffing conflicts
+set encoding=utf-8
+set expandtab                        " use spaces, not tabs
 set hlsearch                         " highlight all search matches
-set smartcase                        " pay attention to case when caps are used
+set hlsearch                         " highlight matches
+set ignorecase                       " searches are case insensitive...
+set incsearch                        " incremental searching
 set incsearch                        " show search results as I type
+set lazyredraw                       " only redraw typed commands
+" set list listchars=tab:»·,trail:·  " show extra space characters
+set ls=2                             " Show the status bar
 set mouse=a                          " enable mouse support
-set ttimeoutlen=100                  " decrease timeout for faster insert with 'O'
-set vb                               " enable visual bell (disable audio bell)
+set nocompatible                     " choose no compatibility with legacy vi
+set nocompatible                     " don't need to be compatible with old vim
+set nowrap                           " don't wrap lines
+set number                           " enable line numbers
+set numberwidth=1                    " set line number width
+set relativenumber                   " enable relative line numbers
 set ruler                            " show row and column in footer
 set scrolloff=2                      " minimum lines above/below cursor
-set wrap linebreak nolist            " configure soft wrapping
-let test#strategy = "dispatch"       " use dispatch for vim-test strategy
-set number                           " enable line numbers
-set omnifunc=ale#completion#OmniFunc " use omnifunc for ale autocomplete
-set numberwidth=1                    " set line number width
-"set list listchars=tab:»·,trail:·   " show extra space characters
-"set cursorline                      " highlight current line
-"set cursorline cursorcolumn         " highlight current column
-set termguicolors                    " enable true colors support
-highlight LineNr ctermfg=darkgrey
+set showcmd                          " display incomplete commands
+set showmatch                        " show bracket matches
+set smartcase                        " ... unless they contain at least one capital letter
+set smartcase                        " pay attention to case when caps are used
 set t_Co=256                         " enable 256 colors
-colo seoul256                        " seoul256 colorscheme
-let g:seoul256_background=233
-set background=dark                  " seoul256 dark mode
+set tabstop=2 shiftwidth=2           " a tab is two spaces
+set termguicolors                    " enable true colors support
+set ttimeoutlen=100                  " decrease timeout for faster insert with 'O'
+set ttyfast                          " render more chars to the screen for smooth scroll
+set vb                               " enable visual bell (disable audio bell)
+set wildmenu                         " configure tab complete to something sensible
+set wildmode=longest:full,full       " configure tab complete to something comfortable
+set wrap linebreak nolist            " configure soft wrapping
 
 if !has('nvim')
   set term=xterm
@@ -109,17 +91,8 @@ hi DiffChange  ctermbg=235 ctermfg=103 cterm=reverse
 hi DiffDelete  ctermbg=235 ctermfg=131 cterm=reverse
 hi DiffText    ctermbg=235 ctermfg=208 cterm=reverse
 
-" Language Server config
-let g:ale_kotlin_languageserver_executable='/Users/david/Repositories/kotlin-language-server/server/build/install/server/bin/kotlin-language-server'
-let g:ale_kotlin_klint_executable='~/usr/local/cellar/ktlint/0.36.0/bin/ktlint'
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {'kotlin': ['ktlint']}
-"
 " fzf appearance
 let g:fzf_layout = { 'down': '40%' }
-
-" Fire omnifunc completion
-imap <Tab> <C-x><C-o><C-p>
 
 " use comma as <Leader> key instead of backslash
 let mapleader=","
@@ -156,8 +129,8 @@ nmap ga <Plug>(EasyAlign)
 vnoremap <Down> :m'>+1<cr>gv=gv
 vnoremap <Up> :m-2<cr>gv=gv
 
-" Search using Ag
-map <leader>a :Ag!<space>
+"search using ripgrep with hidden files
+map <leader>a :Rg -. -i<space>
 
 " Run some ruby
 map <leader>r :!ruby %<cr>
@@ -227,27 +200,10 @@ nmap <C-x> <C-w>c
 " qq to record, Q to replay
 nnoremap Q @q
 
-" jump to definition
-map <leader>g <Plug>(ale_go_to_definition_in_vsplit) :ALEGoToDefinition -vsplit<CR>
-
-" find references
-map <Leader>r <Plug>(ale_find_references) :ALEFindReferences<CR>
-
 " configure fish plugin
 compiler fish
 
-"For project wide actions
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
-
-" rename current file, via Gary Bernhardt
+" rename current file
 function! RenameFile()
   let old_name = expand('%')
   let new_name = input('New file name: ', expand('%'))
@@ -259,18 +215,7 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
-" Promote variable to rspec let
-function! PromoteToLet()
-  :normal! dd
-  " :exec '?^\s*it\>'
-  :normal! P
-  :.s/\(\w\+\) = \(.*\)$/let(:\1) { \2 }/
-  :normal ==
-endfunction
-:command! PromoteToLet :call PromoteToLet()
-:map <leader>p :PromoteToLet<cr>
-
-" Removes blank lines at the end of files
+" Remove blank lines at the end of files
 function! RemoveBlankLines()
   :silent! :%s#\($\n\s*\)\+\%$##
 endfunction
@@ -284,3 +229,9 @@ autocmd FileWritePre    * :call RemoveBlankLines()
 autocmd FileAppendPre   * :call RemoveBlankLines()
 autocmd FilterWritePre  * :call RemoveBlankLines()
 autocmd BufWritePre     * :call RemoveBlankLines()
+
+" activate rainbow parentheses based on filetype
+augroup rainbow_lisp
+  autocmd!
+  autocmd FileType lisp,clojure,scheme RainbowParentheses
+augroup END

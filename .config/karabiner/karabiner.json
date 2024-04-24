@@ -48,10 +48,10 @@
                                 "from": {
                                     "simultaneous": [
                                         {
-                                            "key_code": "s"
+                                            "key_code": "d"
                                         },
                                         {
-                                            "key_code": "d"
+                                            "key_code": "f"
                                         }
                                     ],
                                     "simultaneous_options": {
